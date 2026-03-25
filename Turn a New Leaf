@@ -1,1 +1,115 @@
+## Overview
 
+This project implements an automated log monitoring workflow designed to detect unusual login activity, such as repeated failed login attempts.
+
+The solution uses Bash and Python scripts to extract, analyze, and report authentication log data, improving visibility into potential security events.
+
+---
+
+## What Happened?
+
+System logs were analyzed for failed login attempts.  
+No abnormal activity exceeding the defined threshold was detected during execution.
+
+---
+
+## How Did It Happen?
+
+- Authentication logs (`/var/log/auth.log`) were processed using a Bash script  
+- Failed login attempts were extracted using `grep`  
+- Attempts were counted (`wc -l`) and grouped by IP (`awk`, `sort`, `uniq`)  
+- A threshold (>5 attempts) was applied to identify suspicious activity  
+
+---
+
+## How Do We Know?
+
+- Script execution output confirmed:
+  - “Failed login attempts are within the normal range”
+  - “No flagged IPs to report”
+- Summary files and report logic were successfully generated  
+- Python script processed results and confirmed:
+  - “No anomalies detected.”
+
+---
+
+## Why Does It Matter?
+
+- Failed login attempts are a common indicator of brute-force activity  
+- Continuous monitoring helps identify suspicious patterns early  
+- Even when no threats are detected, validated monitoring ensures system visibility  
+
+---
+
+## How Do We Fix It?
+
+- Automate log monitoring using Bash scripts  
+- Apply thresholds to detect abnormal activity  
+- Generate and send reports for visibility  
+- Schedule execution using cron and Task Scheduler  
+
+---
+
+## Tools & Technologies
+
+- Bash (grep, awk, sort, uniq)  
+- Python (data processing and validation)  
+- Cron (Linux automation)  
+- Windows Task Scheduler  
+
+---
+
+## Workflow Summary
+
+1. Collect authentication logs  
+2. Extract failed login attempts  
+3. Summarize attempts by IP  
+4. Apply threshold-based detection  
+5. Generate and send report  
+6. Validate results using Python script  
+
+---
+
+## Evidence
+
+- Script execution output:
+  - No flagged IPs detected  
+  - No anomalies identified  
+- Cron job configured for scheduled execution  
+- Python script successfully processed summary data  
+
+---
+
+## Lessons Learned
+
+- Monitoring systems must run continuously to be effective  
+- Absence of alerts does not mean absence of value — it confirms normal system behavior  
+- Structured log analysis enables consistent detection workflows  
+- Automation reduces manual effort and improves reliability  
+
+---
+
+## How I Would Improve Detection
+
+- Implement real-time monitoring instead of periodic execution  
+- Add alerting for spikes in login attempts  
+- Introduce IP geolocation analysis for better context  
+- Use dynamic thresholds based on system activity patterns  
+- Include timestamps for improved event tracking  
+
+---
+
+## Security Impact
+
+This project demonstrates a practical approach to:
+
+- Automating log analysis  
+- Detecting suspicious authentication behavior  
+- Validating system activity against defined thresholds  
+- Supporting proactive security monitoring  
+
+---
+
+## Full Report
+
+[View Full Report](#)
