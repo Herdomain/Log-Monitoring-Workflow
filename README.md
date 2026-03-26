@@ -22,7 +22,7 @@ Automated log monitoring workflow to detect repeated failed login attempts using
 ![Script Output](./screenshots/script_output.png) 
 
 ### Automation (Cron)
-![Cron Job](./screenshots/cron_job.png)
+![Cron Job](https://github.com/Herdomain/Log-Monitoring-Workflow/blob/main/cron.jpg)
 
 ### Python Validation
 ![Python Output](./screenshots/python_output.png)
