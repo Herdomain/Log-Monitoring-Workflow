@@ -19,7 +19,7 @@ Automated log monitoring workflow to detect repeated failed login attempts using
 ## Evidence
 
 ### Script Execution
-![Script Output](./screenshots/script_output.png) 
+![Script Output](https://github.com/Herdomain/Log-Monitoring-Workflow/blob/main/script_execution.jpg) 
 
 ### Automation (Cron)
 ![Cron Job](https://github.com/Herdomain/Log-Monitoring-Workflow/blob/main/cron.jpg)
