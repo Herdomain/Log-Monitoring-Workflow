@@ -55,4 +55,4 @@ The system correctly identified normal activity and generated no alerts.
 ## Full Documentation
 
 Detailed workflow and script explanation:  
-[View Full Report](./report.md)
+[View Full Report](https://github.com/Herdomain/Log-Monitoring-Workflow/blob/main/Turn%20a%20New%20Leaf)
