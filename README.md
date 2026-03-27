@@ -1,22 +1,63 @@
-# 🔐 Log Monitoring Workflow: Turn a New Leaf
+# 🔐 Log Monitoring & Threat Detection (SOC Workflow)
 
 ## 📌 Overview
-In this project, I built a simple automated workflow to monitor system logs and detect repeated failed login attempts.
 
-My goal was to make it easier to spot unusual activity (such as potential unauthorized access attempts) without manually reviewing large volumes of log data.
+I built an automated log monitoring workflow to detect potential brute-force login attempts by analyzing failed authentication logs.
 
 ---
 
-## ⚙️ What I Did
+## ⚙️ Problem
 
-This workflow automatically:
+I wanted to solve the challenge of manually reviewing large volumes of logs, which makes it difficult to identify repeated failed login attempts that may indicate unauthorized access.
 
-- Scans system logs for failed login attempts  
-- Counts how many times login attempts fail  
-- Groups attempts by IP address  
-- Flags suspicious activity based on a defined threshold (>5 attempts)  
-- Generates a report and sends an alert if needed  
-- Validates results using a Python script 
+---
+
+## ⚙️ Appoarch
+- I parsed system logs for failed login attempts  
+- I grouped activity by IP address  
+- I flagged suspicious behavior (>5 failed attempts)  
+- I automated execution using cron  
+- I validated results using a Python script  
+
+---
+
+## 📊 Key Decisions
+- **Threshold (>5 attempts):** I chose this to reduce noise from normal user errors  
+- **Automation (cron):** I used scheduling to simulate continuous SOC monitoring  
+- **Validation (Python):** I added this to ensure the accuracy of detection results
+  
+---
+
+## 🎯 Results
+- No IP addresses exceeded the defined threshold  
+- No suspicious activity was detected  
+- The workflow correctly identified normal system behavior
+
+---
+
+## ❗ Detection & Response Scenario
+
+If suspicious activity were detected, I would take the following steps:
+
+1. **Validate the alert**
+   - Confirm repeated failed login attempts from the same IP  
+   - Check for false positives (e.g., user error, misconfigured service)  
+
+2. **Investigate the source**
+   - Review IP reputation (internal vs external)  
+   - Analyze login patterns (frequency, timing, targeted accounts)  
+
+3. **Escalate if necessary**
+   - Flag as potential brute-force attack  
+   - Document findings and notify appropriate team  
+
+4. **Containment actions**
+   - Recommend temporary IP blocking  
+   - Suggest account lockout or MFA enforcement  
+
+5. **Improve detection**
+   - Adjust thresholds if needed  
+   - Tune rules to reduce false positives  
 
 ---
 
@@ -33,36 +74,15 @@ This workflow automatically:
 
 ---
 
-## 📊 Key Result
-
-During testing, I found that no IP addresses exceeded the defined threshold.
-
-This means:
-- No suspicious activity was detected  
-- The system correctly identified normal behavior  
-- The monitoring workflow worked as expected
+## 📚 Impact
+- I demonstrated how automated log monitoring can support threat detection  
+- I reduced the need for manual log analysis  
+- I simulated a real-world SOC monitoring workflow  
   
 ---
-
-## 🎯 Why This Matters
-
-Through this project, I learned that:
-
-- Failed login attempts can indicate brute-force attacks  
-- Automating log monitoring saves time and reduces manual effort  
-- Even when no threats are detected, it confirms that systems are behaving normally  
-
----
-
-## 📚 What I Learned
-
-- Monitoring systems are valuable even when no alerts are triggered  
-- Automation improves consistency and reliability  
-- Detection thresholds need to be adjusted over time based on system activity  
-
----
-
-## Full Documentation
-
-For a detailed breakdown of the workflow and scripts, see:  
-👉 [View Full Report](https://docs.google.com/document/d/1oy1rIcUv8pQq3Gfbgc3rMBt2dk85vHLdjwlEAP2HPNc/edit?usp=sharing)
+  
+## 📚 Next Steps
+- I would integrate this workflow into a SIEM (e.g., Splunk)  
+- I would implement dynamic threshold tuning  
+- I would incorporate threat intelligence (IP reputation data)  
+  
