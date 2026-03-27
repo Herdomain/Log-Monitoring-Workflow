@@ -23,13 +23,13 @@ This workflow automatically:
 ## 🖼️ Example Outputs
 
 ### Script Execution
-![Script Output](https://github.com/Herdomain/Log-Monitoring-Workflow/blob/main/script_execution.jpg)
+![Script Output](https://github.com/Herdomain/Log-Monitoring-Workflow/blob/main/images/script_execution.jpg)
 
 ### Automated Scheduling (Cron)
 ![Cron Job](https://github.com/Herdomain/Log-Monitoring-Workflow/blob/main/images/cron.jpg)
 
 ### Python Validation
-![Python Output](https://github.com/Herdomain/Log-Monitoring-Workflow/blob/main/python_output.jpg)
+![Python Output](https://github.com/Herdomain/Log-Monitoring-Workflow/blob/main/images/python_output.jpg)
 
 ---
 
