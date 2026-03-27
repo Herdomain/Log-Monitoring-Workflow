@@ -62,17 +62,6 @@ Through this project, I learned that:
 
 ---
 
-## 🚀 Future Improvements
-
-If I were to expand this project, I would:
-
-- Add real-time monitoring instead of scheduled checks  
-- Use dynamic thresholds based on activity patterns  
-- Include IP geolocation for better context  
-- Expand detection to identify other suspicious behaviors  
-
----
-
 ## Full Documentation
 
 For a detailed breakdown of the workflow and scripts, see:  
