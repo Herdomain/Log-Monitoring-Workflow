@@ -1,38 +1,40 @@
 # 🔐 Automated Log Monitoring for Failed Login Detection
 
 ## 📌 Overview
-This project implements an automated log monitoring workflow to detect repeated failed login attempts, a common indicator of brute-force attacks.
+This project shows how to automatically monitor system logs and detect repeated failed login attempts, which can be an early sign of unauthorized access attempts.
 
-The solution improves visibility into authentication activity and provides a repeatable method for identifying suspicious patterns in system logs.
+The goal is to make it easier to understand what’s happening in a system without manually reviewing large amounts of log data.
 
 ---
 
 ## ⚙️ Approach
 
-- Processed authentication logs (`/var/log/auth.log`) using Bash  
-- Extracted failed login attempts using `grep`  
-- Aggregated attempts by IP using `awk`, `sort`, and `uniq`  
-- Applied a threshold (>5 attempts) to flag suspicious activity  
-- Used Python to validate results and generate structured output  
-- Automated execution using cron  
+This workflow works by:
+
+- Reading authentication logs (`/var/log/auth.log`) using Bash  
+- Finding failed login attempts using `grep`  
+- Grouping attempts by IP address using tools like `awk`, `sort`, and `uniq`  
+- Applying a threshold (>5 attempts) to identify unusual activity  
+- Using Python to validate the results and organize the output  
+- Running automatically on a schedule using cron  
 
 ---
 
 ## 📊 Key Results
 
-- Analyzed multiple log samples to detect failed login patterns  
-- No activity exceeded defined thresholds during testing  
-- Successfully validated detection logic and threshold accuracy  
-- Generated structured reports with clear pass/fail outcomes  
+- Analyzed log data to identify patterns in failed login attempts  
+- No activity exceeded the defined threshold during testing  
+- Confirmed that the detection logic is working as expected  
+- Generated clear reports showing whether any issues were found  
 
 ---
 
 ## 🎯 Impact
 
-- Established a repeatable process for detecting suspicious login activity  
-- Improved visibility into authentication behavior  
-- Reduced manual effort through automation  
-- Confirmed baseline system behavior and monitoring effectiveness  
+- Created a simple and repeatable way to detect suspicious login activity  
+- Made system behavior easier to understand and monitor  
+- Reduced the need for manual log reviews  
+- Confirmed that normal system activity can be reliably identified  
 
 ---
 
@@ -49,31 +51,31 @@ The solution improves visibility into authentication activity and provides a rep
 
 1. Collect authentication logs  
 2. Extract failed login attempts  
-3. Group attempts by IP  
-4. Apply threshold-based detection  
-5. Generate report  
-6. Validate results with Python  
+3. Group attempts by IP address  
+4. Apply a threshold to detect unusual activity  
+5. Generate a report  
+6. Validate results using a Python script  
 
 ---
 
 ## 🚀 Future Improvements
 
 - Add real-time alerting for high-frequency login attempts  
-- Implement IP geolocation for better context  
+- Use IP geolocation to provide more context  
 - Introduce dynamic thresholds based on system activity  
-- Track timestamps for improved event analysis  
-- Extend detection to include suspicious successful logins  
+- Track timestamps for better event analysis  
+- Expand detection to include suspicious successful logins  
 
 ---
 
 ## 🔐 Security Value
 
-This project demonstrates:
+This project demonstrates how to:
 
-- Automated log analysis  
-- Detection of suspicious authentication behavior  
-- Structured risk identification and documentation  
-- Proactive monitoring of system activity  
+- Automate log analysis  
+- Detect unusual login behavior  
+- Create structured and repeatable monitoring processes  
+- Improve visibility into system activity  
 
 ---
 
