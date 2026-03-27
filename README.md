@@ -72,4 +72,4 @@ This means:
 ## Full Documentation
 
 Detailed workflow and script explanation:  
-[View Full Report]([https://github.com/Herdomain/Log-Monitoring-Workflow/blob/main/Turn%20a%20New%20Leaf](https://docs.google.com/document/d/1oy1rIcUv8pQq3Gfbgc3rMBt2dk85vHLdjwlEAP2HPNc/edit?usp=sharing))
+[View Full Report](https://github.com/Herdomain/Log-Monitoring-Workflow/blob/main/Turn%20a%20New%20Leaf](https://docs.google.com/document/d/1oy1rIcUv8pQq3Gfbgc3rMBt2dk85vHLdjwlEAP2HPNc/edit?usp=sharing)
