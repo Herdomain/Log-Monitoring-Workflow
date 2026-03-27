@@ -13,6 +13,7 @@ I wanted to solve the challenge of manually reviewing large volumes of logs, whi
 ---
 
 ## ⚙️ Appoarch
+
 - I parsed system logs for failed login attempts  
 - I grouped activity by IP address  
 - I flagged suspicious behavior (>5 failed attempts)  
@@ -22,6 +23,7 @@ I wanted to solve the challenge of manually reviewing large volumes of logs, whi
 ---
 
 ## 📊 Key Decisions
+
 - **Threshold (>5 attempts):** I chose this to reduce noise from normal user errors  
 - **Automation (cron):** I used scheduling to simulate continuous SOC monitoring  
 - **Validation (Python):** I added this to ensure the accuracy of detection results
@@ -29,9 +31,8 @@ I wanted to solve the challenge of manually reviewing large volumes of logs, whi
 ---
 
 ## 🎯 Results
-- No IP addresses exceeded the defined threshold  
-- No suspicious activity was detected  
-- The workflow correctly identified normal system behavior
+
+During testing, no IPs exceeded the detection threshold. This validated that the workflow correctly distinguishes normal user behavior from potential threats.
 
 ---
 
@@ -75,6 +76,7 @@ If suspicious activity were detected, I would take the following steps:
 ---
 
 ## 📚 Impact
+
 - I demonstrated how automated log monitoring can support threat detection  
 - I reduced the need for manual log analysis  
 - I simulated a real-world SOC monitoring workflow  
@@ -82,6 +84,7 @@ If suspicious activity were detected, I would take the following steps:
 ---
   
 ## 📚 Next Steps
+
 - I would integrate this workflow into a SIEM (e.g., Splunk)  
 - I would implement dynamic threshold tuning  
 - I would incorporate threat intelligence (IP reputation data)  
