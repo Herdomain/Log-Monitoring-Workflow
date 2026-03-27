@@ -1,13 +1,13 @@
 # 🔐 Log Monitoring Workflow: Turn a New Leaf
 
 ## 📌 Overview
-This project demonstrates a simple automated workflow for monitoring system logs and detecting repeated failed login attempts.
+In this project, I built a simple automated workflow to monitor system logs and detect repeated failed login attempts.
 
-The goal is to make it easier to spot unusual activity (like potential unauthorized access attempts) without manually reviewing logs.
+My goal was to make it easier to spot unusual activity (such as potential unauthorized access attempts) without manually reviewing large volumes of log data.
 
 ---
 
-## ⚙️ What This Project Does
+## ⚙️ What I Did
 
 This workflow automatically:
 
@@ -16,7 +16,7 @@ This workflow automatically:
 - Groups attempts by IP address  
 - Flags suspicious activity based on a defined threshold (>5 attempts)  
 - Generates a report and sends an alert if needed  
-- Validates results using a Python script  
+- Validates results using a Python script 
 
 ---
 
@@ -35,20 +35,22 @@ This workflow automatically:
 
 ## 📊 Key Result
 
-During testing, no IP addresses exceeded the defined threshold.
+During testing, I found that no IP addresses exceeded the defined threshold.
 
 This means:
 - No suspicious activity was detected  
 - The system correctly identified normal behavior  
-- The monitoring workflow worked as expected  
-
+- The monitoring workflow worked as expected
+  
 ---
 
 ## 🎯 Why This Matters
 
+Through this project, I learned that:
+
 - Failed login attempts can indicate brute-force attacks  
 - Automating log monitoring saves time and reduces manual effort  
-- Even when no threats are found, it confirms that systems are behaving normally  
+- Even when no threats are detected, it confirms that systems are behaving normally  
 
 ---
 
@@ -62,6 +64,8 @@ This means:
 
 ## 🚀 Future Improvements
 
+If I were to expand this project, I would:
+
 - Add real-time monitoring instead of scheduled checks  
 - Use dynamic thresholds based on activity patterns  
 - Include IP geolocation for better context  
@@ -71,5 +75,5 @@ This means:
 
 ## Full Documentation
 
-Detailed workflow and script explanation:  
-[View Full Report](https://docs.google.com/document/d/1oy1rIcUv8pQq3Gfbgc3rMBt2dk85vHLdjwlEAP2HPNc/edit?usp=sharing)
+For a detailed breakdown of the workflow and scripts, see:  
+👉 [View Full Report](https://docs.google.com/document/d/1oy1rIcUv8pQq3Gfbgc3rMBt2dk85vHLdjwlEAP2HPNc/edit?usp=sharing)
