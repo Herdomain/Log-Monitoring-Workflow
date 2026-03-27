@@ -1,15 +1,15 @@
 # 🔐 Automated Log Monitoring for Failed Login Detection
 
 ## 📌 Overview
-This project shows how to automatically monitor system logs and detect repeated failed login attempts, which can be an early sign of unauthorized access attempts.
+In this project, I built an automated workflow to monitor system logs and detect repeated failed login attempts, which can be an early sign of unauthorized access.
 
-The goal is to make it easier to understand what’s happening in a system without manually reviewing large amounts of log data.
+My goal was to make it easier to understand what’s happening in a system without manually reviewing large amounts of log data.
 
 ---
 
 ## ⚙️ Approach
 
-This workflow works by:
+To build this workflow, I:
 
 - Reading authentication logs (`/var/log/auth.log`) using Bash  
 - Finding failed login attempts using `grep`  
@@ -22,6 +22,8 @@ This workflow works by:
 
 ## 📊 Key Results
 
+Through this project, I: 
+
 - Analyzed log data to identify patterns in failed login attempts  
 - No activity exceeded the defined threshold during testing  
 - Confirmed that the detection logic is working as expected  
@@ -30,6 +32,8 @@ This workflow works by:
 ---
 
 ## 🎯 Impact
+
+This project allowed me to:
 
 - Created a simple and repeatable way to detect suspicious login activity  
 - Made system behavior easier to understand and monitor  
@@ -60,6 +64,8 @@ This workflow works by:
 
 ## 🚀 Future Improvements
 
+If I were to improve this project, I would:
+
 - Add real-time alerting for high-frequency login attempts  
 - Use IP geolocation to provide more context  
 - Introduce dynamic thresholds based on system activity  
@@ -70,7 +76,7 @@ This workflow works by:
 
 ## 🔐 Security Value
 
-This project demonstrates how to:
+This project demonstrates my ability to:
 
 - Automate log analysis  
 - Detect unusual login behavior  
