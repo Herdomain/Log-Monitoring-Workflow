@@ -26,7 +26,7 @@ This workflow automatically:
 ![Script Output](https://github.com/Herdomain/Log-Monitoring-Workflow/blob/main/script_execution.jpg)
 
 ### Automated Scheduling (Cron)
-![Cron Job](https://github.com/Herdomain/Log-Monitoring-Workflow/blob/main/cron.jpg)
+![Cron Job](https://github.com/Herdomain/Log-Monitoring-Workflow/blob/main/images/cron.jpg)
 
 ### Python Validation
 ![Python Output](https://github.com/Herdomain/Log-Monitoring-Workflow/blob/main/python_output.jpg)
