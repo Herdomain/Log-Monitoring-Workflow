@@ -1,115 +1,82 @@
-## Overview
+# 🔐 Automated Log Monitoring for Failed Login Detection
 
-This project implements an automated log monitoring workflow designed to detect unusual login activity, such as repeated failed login attempts.
+## 📌 Overview
+This project implements an automated log monitoring workflow to detect repeated failed login attempts, a common indicator of brute-force attacks.
 
-The solution uses Bash and Python scripts to extract, analyze, and report authentication log data, improving visibility into potential security events.
-
----
-
-## What Happened?
-
-System logs were analyzed for failed login attempts.  
-No abnormal activity exceeding the defined threshold was detected during execution.
+The solution improves visibility into authentication activity and provides a repeatable method for identifying suspicious patterns in system logs.
 
 ---
 
-## How Did It Happen?
+## ⚙️ Approach
 
-- Authentication logs (`/var/log/auth.log`) were processed using a Bash script  
-- Failed login attempts were extracted using `grep`  
-- Attempts were counted (`wc -l`) and grouped by IP (`awk`, `sort`, `uniq`)  
-- A threshold (>5 attempts) was applied to identify suspicious activity  
-
----
-
-## How Do We Know?
-
-- Script execution output confirmed:
-  - “Failed login attempts are within the normal range”
-  - “No flagged IPs to report”
-- Summary files and report logic were successfully generated  
-- Python script processed results and confirmed:
-  - “No anomalies detected.”
+- Processed authentication logs (`/var/log/auth.log`) using Bash  
+- Extracted failed login attempts using `grep`  
+- Aggregated attempts by IP using `awk`, `sort`, and `uniq`  
+- Applied a threshold (>5 attempts) to flag suspicious activity  
+- Used Python to validate results and generate structured output  
+- Automated execution using cron  
 
 ---
 
-## Why Does It Matter?
+## 📊 Key Results
 
-- Failed login attempts are a common indicator of brute-force activity  
-- Continuous monitoring helps identify suspicious patterns early  
-- Even when no threats are detected, validated monitoring ensures system visibility  
-
----
-
-## How Do We Fix It?
-
-- Automate log monitoring using Bash scripts  
-- Apply thresholds to detect abnormal activity  
-- Generate and send reports for visibility  
-- Schedule execution using cron and Task Scheduler  
+- Analyzed multiple log samples to detect failed login patterns  
+- No activity exceeded defined thresholds during testing  
+- Successfully validated detection logic and threshold accuracy  
+- Generated structured reports with clear pass/fail outcomes  
 
 ---
 
-## Tools & Technologies
+## 🎯 Impact
 
-- Bash (grep, awk, sort, uniq)  
-- Python (data processing and validation)  
-- Cron (Linux automation)  
-- Windows Task Scheduler  
+- Established a repeatable process for detecting suspicious login activity  
+- Improved visibility into authentication behavior  
+- Reduced manual effort through automation  
+- Confirmed baseline system behavior and monitoring effectiveness  
 
 ---
 
-## Workflow Summary
+## 🛠️ Tools & Technologies
+
+- **Bash:** grep, awk, sort, uniq  
+- **Python:** data validation and reporting  
+- **Cron:** scheduled automation  
+- **Linux:** log analysis environment  
+
+---
+
+## 🔄 Workflow Summary
 
 1. Collect authentication logs  
 2. Extract failed login attempts  
-3. Summarize attempts by IP  
+3. Group attempts by IP  
 4. Apply threshold-based detection  
-5. Generate and send report  
-6. Validate results using Python script  
+5. Generate report  
+6. Validate results with Python  
 
 ---
 
-## Evidence
+## 🚀 Future Improvements
 
-- Script execution output:
-  - No flagged IPs detected  
-  - No anomalies identified  
-- Cron job configured for scheduled execution  
-- Python script successfully processed summary data  
-
----
-
-## Lessons Learned
-
-- Monitoring systems must run continuously to be effective  
-- Absence of alerts does not mean absence of value — it confirms normal system behavior  
-- Structured log analysis enables consistent detection workflows  
-- Automation reduces manual effort and improves reliability  
+- Add real-time alerting for high-frequency login attempts  
+- Implement IP geolocation for better context  
+- Introduce dynamic thresholds based on system activity  
+- Track timestamps for improved event analysis  
+- Extend detection to include suspicious successful logins  
 
 ---
 
-## How I Would Improve Detection
+## 🔐 Security Value
 
-- Implement real-time monitoring instead of periodic execution  
-- Add alerting for spikes in login attempts  
-- Introduce IP geolocation analysis for better context  
-- Use dynamic thresholds based on system activity patterns  
-- Include timestamps for improved event tracking  
+This project demonstrates:
 
----
-
-## Security Impact
-
-This project demonstrates a practical approach to:
-
-- Automating log analysis  
-- Detecting suspicious authentication behavior  
-- Validating system activity against defined thresholds  
-- Supporting proactive security monitoring  
+- Automated log analysis  
+- Detection of suspicious authentication behavior  
+- Structured risk identification and documentation  
+- Proactive monitoring of system activity  
 
 ---
 
-## Full Report
+## 📄 Full Report
 
 [View Full Report](#)
