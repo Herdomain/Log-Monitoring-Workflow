@@ -1,65 +1,71 @@
-# 🔐 Log Monitoring & Threat Detection (SOC Workflow)
+# 🔐 Log Monitoring & Threat Detection
 
-## 📌 Overview
-
-I built an automated log monitoring workflow to detect potential brute-force login attempts by analyzing failed authentication logs.
+Manual log review doesn't scale. In a real SOC environment, thousands of authentication events are generated daily — making automated detection not just useful, but necessary. This project builds an automated workflow that parses system logs, identifies suspicious login patterns, and flags potential brute-force attempts without human intervention.
 
 ---
 
-## ⚙️ Problem
+## What Was Built
 
-I wanted to solve the challenge of manually reviewing large volumes of logs, which makes it difficult to identify repeated failed login attempts that may indicate unauthorized access.
+A bash-based log monitoring script that analyzes failed authentication logs, groups activity by IP address, and triggers an alert when any single IP exceeds five failed login attempts within the monitoring window. Automated via cron to simulate continuous SOC monitoring.
 
----
-
-## ⚙️ Appoarch
-
-- I parsed system logs for failed login attempts  
-- I grouped activity by IP address  
-- I flagged suspicious behavior (>5 failed attempts)  
-- I automated execution using cron  
-- I validated results using a Python script  
+**Why five attempts?** The threshold was chosen to filter out normal user error — a forgotten password doesn't look the same as a brute-force attack. Keeping the threshold low enough to catch threats while high enough to avoid alert fatigue is a core SOC tuning decision.
 
 ---
 
-## 📊 Key Decisions
+## How It Works
 
-- **Threshold (>5 attempts):** I chose this to reduce noise from normal user errors  
-- **Automation (cron):** I used scheduling to simulate continuous SOC monitoring  
-- **Validation (Python):** I added this to ensure the accuracy of detection results
-  
----
-
-## 🎯 Results
-
-During testing, no IPs exceeded the detection threshold. This validated that the workflow correctly distinguishes normal user behavior from potential threats.
+1. **Log Parsing** — Script reads system authentication logs and extracts failed login events
+2. **IP Grouping** — Failed attempts are aggregated by source IP address
+3. **Threshold Detection** — Any IP exceeding five failed attempts is flagged
+4. **Automated Scheduling** — Cron runs the script continuously to simulate real-time monitoring
+5. **Python Validation** — A secondary Python script verifies detection accuracy and confirms no false positives
 
 ---
 
-## ❗ Detection & Response Scenario
+## Example Outputs
 
-If suspicious activity were detected, I would take the following steps:
+**Script Execution**
 
-1. **Validate the alert**
-   - Confirm repeated failed login attempts from the same IP  
-   - Check for false positives (e.g., user error, misconfigured service)  
+![Script execution showing no flagged IPs and weekly report status](https://github.com/Herdomain/Log-Monitoring-Workflow/blob/main/images/script_execution.jpg)
 
-2. **Investigate the source**
-   - Review IP reputation (internal vs external)  
-   - Analyze login patterns (frequency, timing, targeted accounts)  
+**Automated Scheduling (Cron)**
 
-3. **Escalate if necessary**
-   - Flag as potential brute-force attack  
-   - Document findings and notify appropriate team  
+![Cron schedule running the script hourly on Thursdays and weekly on Fridays](https://github.com/Herdomain/Log-Monitoring-Workflow/blob/main/images/cron.jpg)
 
-4. **Containment actions**
-   - Recommend temporary IP blocking  
-   - Suggest account lockout or MFA enforcement  
+**Python Validation**
 
-5. **Improve detection**
-   - Adjust thresholds if needed  
-   - Tune rules to reduce false positives  
+![Python validation confirming no anomalies detected](https://github.com/Herdomain/Log-Monitoring-Workflow/blob/main/images/python_output.jpg)
 
+---
+
+## If a Threat Were Detected
+
+1. **Validate** — Confirm repeated failures from the same IP; rule out misconfigured services or user error
+2. **Investigate** — Review IP reputation, login timing, frequency, and targeted accounts
+3. **Escalate** — Classify as potential brute-force attempt; document and notify the appropriate team
+4. **Contain** — Recommend IP blocking and enforce account lockout or MFA
+5. **Improve** — Adjust thresholds and tune detection rules based on findings
+
+---
+
+## Alignment & Controls
+
+| Component | Purpose |
+|---|---|
+| Bash Script | Log parsing and threshold-based detection |
+| Cron Scheduling | Continuous automated monitoring |
+| Python Validation | Detection accuracy verification |
+| Alert Threshold (>5) | Balances sensitivity and alert fatigue |
+
+Workflow simulates core SOC monitoring practices aligned with **NIST SP 800-61** incident detection and response principles.
+
+---
+
+## Next Steps
+
+- Integrate into a SIEM platform (Splunk, Microsoft Sentinel) for centralized log correlation
+- Implement dynamic threshold tuning based on historical baseline activity
+- Incorporate IP reputation feeds for enriched threat context on flagged addresses
 ---
 
 ## 🖼️ Example Outputs
