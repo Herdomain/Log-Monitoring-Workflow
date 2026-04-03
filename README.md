@@ -14,19 +14,12 @@ A bash-based log monitoring script that analyzes failed authentication logs, gro
 
 ## How It Works
 
-1. **Log Parsing**
- — Script reads system authentication logs and extracts failed login events
+1. **Log Parsing** — Script reads system authentication logs and extracts failed login events
+2. **IP Grouping** — Failed attempts are aggregated by source IP address
+3. **Threshold Detection** — Any IP exceeding five failed attempts is flagged
+4. **Automated Scheduling** — Cron runs the script continuously to simulate real-time monitoring
+5. **Python Validation** — A secondary Python script verifies detection accuracy and confirms no false positives
 
-2. **IP Grouping**
-— Failed attempts are aggregated by source IP address
-
-3. **Threshold Detection**
-- Any IP exceeding five failed attempts is flagged
-
-4. **Automated Scheduling**
-- Cron runs the script continuously to simulate real-time monitoring
-  
-6. **Python Validation**
 — A secondary Python script verifies detection accuracy and confirms no false positives
 
 ---
