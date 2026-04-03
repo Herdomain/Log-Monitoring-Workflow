@@ -20,8 +20,6 @@ A bash-based log monitoring script that analyzes failed authentication logs, gro
 4. **Automated Scheduling** — Cron runs the script continuously to simulate real-time monitoring
 5. **Python Validation** — A secondary Python script verifies detection accuracy and confirms no false positives
 
-— A secondary Python script verifies detection accuracy and confirms no false positives
-
 ---
 
 ## Example Outputs
