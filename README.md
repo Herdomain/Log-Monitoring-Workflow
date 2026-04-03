@@ -1,6 +1,8 @@
 # 🔐 Log Monitoring & Threat Detection
 
-Manual log review doesn't scale. In a real SOC environment, thousands of authentication events are generated daily — making automated detection not just useful, but necessary. This project builds an automated workflow that parses system logs, identifies suspicious login patterns, and flags potential brute-force attempts without human intervention.
+Manual log review doesn't scale. In a real SOC environment, thousands of authentication events are generated daily, making automated detection not just useful, but necessary. 
+
+This project builds an automated workflow that parses system logs, identifies suspicious login patterns, and flags potential brute-force attempts without human intervention.
 
 ---
 
@@ -8,7 +10,10 @@ Manual log review doesn't scale. In a real SOC environment, thousands of authent
 
 A bash-based log monitoring script that analyzes failed authentication logs, groups activity by IP address, and triggers an alert when any single IP exceeds five failed login attempts within the monitoring window. Automated via cron to simulate continuous SOC monitoring.
 
-**Why five attempts?** The threshold was chosen to filter out normal user error — a forgotten password doesn't look the same as a brute-force attack. Keeping the threshold low enough to catch threats while high enough to avoid alert fatigue is a core SOC tuning decision.
+**Why five attempts?** 
+
+The threshold was chosen to filter out normal user error because a forgotten password doesn't look the same as a brute-force attack.
+Keeping the threshold low enough to catch threats while high enough to avoid alert fatigue is a core SOC tuning decision.
 
 ---
 
