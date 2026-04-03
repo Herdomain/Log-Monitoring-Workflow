@@ -14,11 +14,20 @@ A bash-based log monitoring script that analyzes failed authentication logs, gro
 
 ## How It Works
 
-1. **Log Parsing** — Script reads system authentication logs and extracts failed login events
-2. **IP Grouping** — Failed attempts are aggregated by source IP address
-3. **Threshold Detection** — Any IP exceeding five failed attempts is flagged
-4. **Automated Scheduling** — Cron runs the script continuously to simulate real-time monitoring
-5. **Python Validation** — A secondary Python script verifies detection accuracy and confirms no false positives
+1. **Log Parsing**
+ — Script reads system authentication logs and extracts failed login events
+
+2. **IP Grouping**
+— Failed attempts are aggregated by source IP address
+
+3. **Threshold Detection**
+- Any IP exceeding five failed attempts is flagged
+
+4. **Automated Scheduling**
+- Cron runs the script continuously to simulate real-time monitoring
+  
+6. **Python Validation**
+— A secondary Python script verifies detection accuracy and confirms no false positives
 
 ---
 
@@ -64,34 +73,8 @@ Workflow simulates core SOC monitoring practices aligned with **NIST SP 800-61**
 ## Next Steps
 
 - Integrate into a SIEM platform (Splunk, Microsoft Sentinel) for centralized log correlation
+  
 - Implement dynamic threshold tuning based on historical baseline activity
+  
 - Incorporate IP reputation feeds for enriched threat context on flagged addresses
----
 
-## 🖼️ Example Outputs
-
-### Script Execution
-![Script Output](https://github.com/Herdomain/Log-Monitoring-Workflow/blob/main/images/script_execution.jpg)
-
-### Automated Scheduling (Cron)
-![Cron Job](https://github.com/Herdomain/Log-Monitoring-Workflow/blob/main/images/cron.jpg)
-
-### Python Validation
-![Python Output](https://github.com/Herdomain/Log-Monitoring-Workflow/blob/main/images/python_output.jpg)
-
----
-
-## 📚 Impact
-
-- I demonstrated how automated log monitoring can support threat detection  
-- I reduced the need for manual log analysis  
-- I simulated a real-world SOC monitoring workflow  
-  
----
-  
-## 📚 Next Steps
-
-- I would integrate this workflow into a SIEM (e.g., Splunk)  
-- I would implement dynamic threshold tuning  
-- I would incorporate threat intelligence (IP reputation data)  
-  
