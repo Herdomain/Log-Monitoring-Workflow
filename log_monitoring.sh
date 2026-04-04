@@ -21,6 +21,9 @@
 #
 # Required permissions:
 #   sudo access is required to read /var/log/auth.log
+
+# Output directory
+#   /home/student/log_monitoring/
 #
 # Expected output:
 #   - Console report of flagged IPs (if threshold exceeded)
