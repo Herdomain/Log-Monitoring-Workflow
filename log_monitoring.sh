@@ -1,86 +1,124 @@
 # 🔐 Log Monitoring & Threat Detection (Turn a New Leaf)
 
-Manual log review doesn't scale. In a real SOC environment, thousands of authentication events are generated daily, making automated detection not just useful, but necessary. 
+#!/bin/bash
 
-This project builds an automated workflow that parses system logs, identifies suspicious login patterns, and flags potential brute-force attempts without human intervention.
+# ============================================================
+# Script:      log_monitoring.sh
+# Project:     Turn a New Leaf
+# Description: Automated log monitoring workflow for detecting
+#              repeated failed login attempts as an early
+#              indicator of brute-force activity
+# Author:      Herdomain (Asheotsa Arigu)
+# Version:     1.0
+# Last Updated: 2025
+# ============================================================
 
----
+# ------------------------------------------------------------
+# USAGE
+# ------------------------------------------------------------
+# Run manually:
+#   sudo ./log_monitoring.sh
+#
+# Required permissions:
+#   sudo access is required to read /var/log/auth.log
+#
+# Expected output:
+#   - Console report of flagged IPs (if threshold exceeded)
+#   - Summary saved to summary.txt
+#   - Anomalies saved to anomalies.txt
+#   - Weekly report generated on scheduled Friday runs
 
-## What Was Built
+# ------------------------------------------------------------
+# DEPENDENCIES
+# ------------------------------------------------------------
+# Bash 4.0 or higher
+# Python 3.x (for validate_results.py)
+# Standard Linux tools: grep, awk, sort, uniq
+# Access to /var/log/auth.log
 
-A bash-based log monitoring script that analyzes failed authentication logs 
-(`/var/log/auth.log`), groups activity by IP address, and triggers an alert 
-when any single IP exceeds five failed login attempts within the monitoring 
-window. Automated via cron to simulate continuous SOC monitoring.
+# ------------------------------------------------------------
+# CONFIGURATION
+# ------------------------------------------------------------
+# Adjust the following variables to match your environment:
+#
+# LOG_FILE      — Path to the authentication log
+#                 Default: /var/log/auth.log
+#
+# THRESHOLD     — Number of failed attempts before an IP
+#                 is flagged as suspicious
+#                 Default: 5
+#
+# REPORT_DIR    — Directory where output files are saved
+#                 Default: current working directory
+#
+# Example:
+#   LOG_FILE="/var/log/auth.log"
+#   THRESHOLD=5
+#   REPORT_DIR="/home/student/reports"
 
-**Why five attempts?** The threshold was chosen to filter out normal user 
-error — a forgotten password doesn't look the same as a brute-force attack. 
-Keeping the threshold low enough to catch threats while high enough to avoid 
-alert fatigue is a core SOC tuning decision.
+# ------------------------------------------------------------
+# CRON SCHEDULE
+# ------------------------------------------------------------
+# To automate, add the following to your crontab:
+#   crontab -e
+#
+# Run every hour on Thursdays:
+#   0 * * * 4 /path/to/log_monitoring.sh
+#
+# Run weekly report every Friday at 4AM:
+#   0 4 * * 5 /path/to/log_monitoring.sh
+#
+# To verify your cron schedule is active:
+#   crontab -l
 
----
+# ------------------------------------------------------------
+# OUTPUT FILES
+# ------------------------------------------------------------
+# summary.txt
+#   — High-level report of monitoring results
+#   — Indicates whether any IPs exceeded the threshold
+#   — Generated on every run
+#
+# anomalies.txt
+#   — Detailed list of flagged IPs and attempt counts
+#   — Only populated when threshold is exceeded
+#   — Empty file generated when no anomalies are detected
+#
+# Weekly Report
+#   — Consolidated summary of the week's monitoring activity
+#   — Generated automatically on Friday cron runs
 
-## How It Works
+# ------------------------------------------------------------
+# VALIDATION
+# ------------------------------------------------------------
+# After the script runs, validate results using:
+#   python3 validate_results.py
+#
+# The validation script confirms:
+#   — Detection logic executed correctly
+#   — Output files were generated as expected
+#   — No false positives present in the anomalies report
 
-1. **Log Parsing** 
-— Script reads `/var/log/auth.log` and extracts failed login events using `grep`
+# ------------------------------------------------------------
+# KNOWN LIMITATIONS
+# ------------------------------------------------------------
+# - Monitors IPv4 addresses only; IPv6 not currently supported
+# - Log rotation may cause missed events if not configured
+#   to retain auth.log history
+# - Threshold is static; does not adjust based on baseline
+#   activity over time
+# - Script does not automatically block flagged IPs;
+#   containment actions must be taken manually
 
-2. **IP Grouping** 
-— Failed attempts aggregated by source IP using `awk`,`sort`, and `uniq`
-
-3. **Threshold Detection** 
-— Any IP exceeding five failed attempts is flagged
-
-4. **Automated Scheduling**
-— Cron runs the script hourly on Thursdays and weekly every Friday at 4AM to simulate continuous monitoring
-
-5. **Python Validation** — A secondary script verifies detection accuracy amd confirms no false positives
-
----
-
-## Example Outputs
-
-**Script Execution**
-
-![Script execution showing no flagged IPs and weekly report status](images/script-execution.png)
-
-**Automated Scheduling (Cron)**
-
-![Cron schedule running the script hourly on Thursdays and weekly on Fridays](images/cron-schedule.png)
-
-**Python Validation**
-
-![Python validation confirming no anomalies detected](images/python-validation.png)
-
----
-
-## If a Threat Were Detected
-
-1. **Validate** — Confirm repeated failures from the same IP; rule out 
-   misconfigured services or user error
-2. **Investigate** — Review IP reputation, login timing, frequency, 
-   and targeted accounts
-3. **Escalate** — Classify as potential brute-force attempt; document 
-   and notify the appropriate team
-4. **Contain** — Recommend IP blocking and enforce account lockout or MFA
-5. **Improve** — Adjust threshold and tune detection rules based on findings
-
----
-
-## Tools & Technologies
-
-| Tool | Purpose |
-|---|---|
-| Bash (`grep`, `awk`, `sort`, `uniq`) | Log parsing and threshold detection |
-| Python | Detection accuracy validation and output reporting |
-| Cron | Automated scheduling and continuous monitoring |
-| Linux | Log analysis environment |
-
----
-
-## Alignment & Controls
-
-Workflow simulates core SOC monitoring practices aligned with **NIST SP 
-800-61** incident detection and response principles.
-
+# ------------------------------------------------------------
+# EXAMPLE OUTPUT
+# ------------------------------------------------------------
+# When no threshold is exceeded:
+#   "Failed login attempts are within the normal range.
+#    No flagged IPs to report. Weekly report not sent."
+#
+# When threshold is exceeded:
+#   "WARNING: Suspicious activity detected.
+#    [IP Address] exceeded threshold with [X] attempts.
+#    Report saved to anomalies.txt"
 
