@@ -1,89 +1,61 @@
 # 🔐 Automated Log Monitoring for Failed Login Detection
 
+
 ## 📌 Overview
 In this project, I built an automated workflow to monitor system logs and detect repeated failed login attempts, which can be an early sign of unauthorized access.
-
 My goal was to make it easier to understand what’s happening in a system without manually reviewing large amounts of log data.
-
 ---
-
 ## ⚙️ Approach
-
 To build this workflow, I:
-
 - Reading authentication logs (`/var/log/auth.log`) using Bash  
 - Finding failed login attempts using `grep`  
 - Grouping attempts by IP address using tools like `awk`, `sort`, and `uniq`  
 - Applying a threshold (>5 attempts) to identify unusual activity  
 - Using Python to validate the results and organize the output  
 - Running automatically on a schedule using cron  
-
 ---
-
 ## 📊 Key Results
-
 Through this project, I: 
-
 - Analyzed log data to identify patterns in failed login attempts  
 - No activity exceeded the defined threshold during testing  
 - Confirmed that the detection logic is working as expected  
 - Generated clear reports showing whether any issues were found  
-
 ---
-
 ## 🎯 Impact
-
 This project allowed me to:
-
 - Created a simple and repeatable way to detect suspicious login activity  
 - Made system behavior easier to understand and monitor  
 - Reduced the need for manual log reviews  
 - Confirmed that normal system activity can be reliably identified  
-
 ---
-
 ## 🛠️ Tools & Technologies
-
 - **Bash:** grep, awk, sort, uniq  
 - **Python:** data validation and reporting  
 - **Cron:** scheduled automation  
 - **Linux:** log analysis environment  
-
 ---
-
 ## 🔄 Workflow Summary
-
 1. Collect authentication logs  
 2. Extract failed login attempts  
 3. Group attempts by IP address  
 4. Apply a threshold to detect unusual activity  
 5. Generate a report  
 6. Validate results using a Python script  
-
 ---
-
 ## 🚀 Future Improvements
-
 If I were to improve this project, I would:
-
 - Add real-time alerting for high-frequency login attempts  
 - Use IP geolocation to provide more context  
 - Introduce dynamic thresholds based on system activity  
 - Track timestamps for better event analysis  
 - Expand detection to include suspicious successful logins  
-
 ---
-
 ## 🔐 Security Value
-
 This project demonstrates my ability to:
-
 - Automate log analysis  
 - Detect unusual login behavior  
 - Create structured and repeatable monitoring processes  
 - Improve visibility into system activity  
-
-For a detailed breakdown with screenshots and analysis: 
-👉 [View Full Report](https://docs.google.com/document/d/1oy1rIcUv8pQq3Gfbgc3rMBt2dk85vHLdjwlEAP2HPNc/edit?usp=sharing)
+For a detailed breakdown with screenshots and analysis:
 
 
