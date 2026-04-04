@@ -1,61 +1,84 @@
-# 🔐 Automated Log Monitoring for Failed Login Detection
+# 🔐 Log Monitoring & Threat Detection (Turn a New Leaf)
 
+Manual log review doesn't scale. In a real SOC environment, thousands of 
+authentication events are generated daily — making automated detection not 
+just useful, but necessary. This project builds an automated workflow that 
+parses system logs, identifies suspicious login patterns, and flags potential 
+brute-force attempts without human intervention.
 
-## 📌 Overview
-In this project, I built an automated workflow to monitor system logs and detect repeated failed login attempts, which can be an early sign of unauthorized access.
-My goal was to make it easier to understand what’s happening in a system without manually reviewing large amounts of log data.
 ---
-## ⚙️ Approach
-To build this workflow, I:
-- Reading authentication logs (`/var/log/auth.log`) using Bash  
-- Finding failed login attempts using `grep`  
-- Grouping attempts by IP address using tools like `awk`, `sort`, and `uniq`  
-- Applying a threshold (>5 attempts) to identify unusual activity  
-- Using Python to validate the results and organize the output  
-- Running automatically on a schedule using cron  
+
+## What Was Built
+
+A bash-based log monitoring script that analyzes failed authentication logs 
+(`/var/log/auth.log`), groups activity by IP address, and triggers an alert 
+when any single IP exceeds five failed login attempts within the monitoring 
+window. Automated via cron to simulate continuous SOC monitoring.
+
+**Why five attempts?** The threshold was chosen to filter out normal user 
+error — a forgotten password doesn't look the same as a brute-force attack. 
+Keeping the threshold low enough to catch threats while high enough to avoid 
+alert fatigue is a core SOC tuning decision.
+
 ---
-## 📊 Key Results
-Through this project, I: 
-- Analyzed log data to identify patterns in failed login attempts  
-- No activity exceeded the defined threshold during testing  
-- Confirmed that the detection logic is working as expected  
-- Generated clear reports showing whether any issues were found  
+
+## How It Works
+
+1. **Log Parsing** — Script reads `/var/log/auth.log` and extracts failed 
+   login events using `grep`
+2. **IP Grouping** — Failed attempts aggregated by source IP using `awk`, 
+   `sort`, and `uniq`
+3. **Threshold Detection** — Any IP exceeding five failed attempts is flagged
+4. **Automated Scheduling** — Cron runs the script hourly on Thursdays and 
+   weekly every Friday at 4AM to simulate continuous monitoring
+5. **Python Validation** — A secondary script verifies detection accuracy 
+   and confirms no false positives
+
 ---
-## 🎯 Impact
-This project allowed me to:
-- Created a simple and repeatable way to detect suspicious login activity  
-- Made system behavior easier to understand and monitor  
-- Reduced the need for manual log reviews  
-- Confirmed that normal system activity can be reliably identified  
+
+## Example Outputs
+
+**Script Execution**
+
+![Script execution showing no flagged IPs and weekly report status](images/script-execution.png)
+
+**Automated Scheduling (Cron)**
+
+![Cron schedule running the script hourly on Thursdays and weekly on Fridays](images/cron-schedule.png)
+
+**Python Validation**
+
+![Python validation confirming no anomalies detected](images/python-validation.png)
+
 ---
-## 🛠️ Tools & Technologies
-- **Bash:** grep, awk, sort, uniq  
-- **Python:** data validation and reporting  
-- **Cron:** scheduled automation  
-- **Linux:** log analysis environment  
+
+## If a Threat Were Detected
+
+1. **Validate** — Confirm repeated failures from the same IP; rule out 
+   misconfigured services or user error
+2. **Investigate** — Review IP reputation, login timing, frequency, 
+   and targeted accounts
+3. **Escalate** — Classify as potential brute-force attempt; document 
+   and notify the appropriate team
+4. **Contain** — Recommend IP blocking and enforce account lockout or MFA
+5. **Improve** — Adjust threshold and tune detection rules based on findings
+
 ---
-## 🔄 Workflow Summary
-1. Collect authentication logs  
-2. Extract failed login attempts  
-3. Group attempts by IP address  
-4. Apply a threshold to detect unusual activity  
-5. Generate a report  
-6. Validate results using a Python script  
+
+## Tools & Technologies
+
+| Tool | Purpose |
+|---|---|
+| Bash (`grep`, `awk`, `sort`, `uniq`) | Log parsing and threshold detection |
+| Python | Detection accuracy validation and output reporting |
+| Cron | Automated scheduling and continuous monitoring |
+| Linux | Log analysis environment |
+
 ---
-## 🚀 Future Improvements
-If I were to improve this project, I would:
-- Add real-time alerting for high-frequency login attempts  
-- Use IP geolocation to provide more context  
-- Introduce dynamic thresholds based on system activity  
-- Track timestamps for better event analysis  
-- Expand detection to include suspicious successful logins  
----
-## 🔐 Security Value
-This project demonstrates my ability to:
-- Automate log analysis  
-- Detect unusual login behavior  
-- Create structured and repeatable monitoring processes  
-- Improve visibility into system activity  
-For a detailed breakdown with screenshots and analysis:
+
+## Alignment & Controls
+
+Workflow simulates core SOC monitoring practices aligned with **NIST SP 
+800-61** incident detection and response principles.
 
 
