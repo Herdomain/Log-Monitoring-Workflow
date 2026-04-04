@@ -22,15 +22,19 @@ alert fatigue is a core SOC tuning decision.
 
 ## How It Works
 
-1. **Log Parsing** — Script reads `/var/log/auth.log` and extracts failed 
-   login events using `grep`
-2. **IP Grouping** — Failed attempts aggregated by source IP using `awk`, 
-   `sort`, and `uniq`
-3. **Threshold Detection** — Any IP exceeding five failed attempts is flagged
-4. **Automated Scheduling** — Cron runs the script hourly on Thursdays and 
-   weekly every Friday at 4AM to simulate continuous monitoring
-5. **Python Validation** — A secondary script verifies detection accuracy 
-   and confirms no false positives
+1. **Log Parsing** 
+— Script reads `/var/log/auth.log` and extracts failed login events using `grep`
+
+2. **IP Grouping** 
+— Failed attempts aggregated by source IP using `awk`,`sort`, and `uniq`
+
+3. **Threshold Detection** 
+— Any IP exceeding five failed attempts is flagged
+
+4. **Automated Scheduling**
+— Cron runs the script hourly on Thursdays and weekly every Friday at 4AM to simulate continuous monitoring
+
+5. **Python Validation** — A secondary script verifies detection accuracy amd confirms no false positives
 
 ---
 
