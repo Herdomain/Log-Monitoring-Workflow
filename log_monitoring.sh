@@ -1,4 +1,4 @@
-# 🔐 Log Monitoring & Threat Detection (Turn a New Leaf)
+# 🔐 Log Monitoring & Threat Detection (SOC Workflow)
 
 #!/bin/bash
 
