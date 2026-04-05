@@ -1,7 +1,6 @@
 # 🔐 Log Monitoring & Threat Detection
 
 Manual log review doesn't scale. In a real SOC environment, thousands of authentication events are generated daily, making automated detection not just useful, but necessary. 
-
 This project builds an automated workflow that parses system logs, identifies suspicious login patterns, and flags potential brute-force attempts without human intervention.
 ---
 
